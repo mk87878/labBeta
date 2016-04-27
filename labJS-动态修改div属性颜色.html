@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:150px;
+            height:50px;
+            border:double 3px #4726ff;
+        }
+        .red{
+            background-color: red;
+        }
+        .grey{
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+<div id="red" class="red" onclick="change();">
+    hello world!
+</div>
+</body>
+<script>
+    /**
+     * obj => 目标对象（DOM元素）
+     * attr => 获取的CSS属性,如:width
+     *obj.currentStyle[attr];兼容ie版本
+     *getComputedStyle(obj , null)[attr];兼容FF和chrome版本.第一个元素obj为需要获取的目标,第二个null为希望获取的伪元素,如:hover
+     */
+    function getStyle(obj,attr){
+        return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj , null)[attr];
+    }
+
+    function change(){
+        var box = document.getElementById('red');
+//        console.log(box)
+        console.log(box.className.indexOf("red"));
+        if(box.className.indexOf("red") >=0){//indexOf检索的字符串值没有出现，则该方法返回 -1
+            box.className = 'grey';
+        }else{
+            box.className = "red";
+        }
+        box.style.width = parseInt(getStyle(box,'width'))+10+'px';//parseInt把获取到的字符串'150px'转换为整数
+        box.style.borderWidth = parseInt(getStyle(box,'borderWidth'))+3+'px';
+
+    }
+
+
+</script>
+</html>

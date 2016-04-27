@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增加删除dom节点</title>
+</head>
+<body>
+<input type="button" value="增加1,2,3节点" onclick="add3();">
+<input type="button" value="增加4节点" onclick="add4();">
+
+<ul></ul>
+
+
+<input type="button" value="删除最后一个节点" onclick="del();">
+<input type="button" value="删除第一个节点" onclick="delFist();">
+
+<ul id="myList">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+
+</body>
+<script>
+    //innerHTML 属性设置或返回表格行的开始和结束标签之间的 HTML。
+    function add3() {
+        var ul = document.getElementsByTagName('ul')[0];
+        //document.getElementsByTagName找到的是一个NodeList对象集合,只有加了[0],才是找到页面中出现的第一个ul对象
+//        console.log(ul);
+        ul.innerHTML = "<li>1</li><li>2</li><li>3</li>";
+    }
+    function add4() {
+        var ul = document.getElementsByTagName('ul')[0];
+//        console.log(ul.innerHTML);
+        ul.innerHTML += '<li>4</li>';
+    }
+    /**
+     * Author: http://hizip.net
+     *
+     * 删除节点
+     * 1, 找到对象
+     * 2, 找到父对象parentObj
+     * 3, parentObj.removeChild（子对象）
+     */
+
+
+    function del() {
+        /**
+         * var ul = document.getElementsByTagName('ul')[1].lastChild;
+         * console.log(ul);//找到的为文本对象,故不可用
+         */
+        var li = document.getElementsByTagName('li');
+        console.log(li.length);
+        var lastLi = li[li.length-1];
+        lastLi.parentNode.removeChild(lastLi);
+
+    }
+    /**
+     * Author: http://hizip.net
+     *
+     * 点击按钮来删除列表中的首个项目。
+     */
+
+    function delFist()
+    {
+        var list=document.getElementById("myList");
+        list.removeChild(list.childNodes[0]);
+    }
+
+
+
+</script>
+</html>
