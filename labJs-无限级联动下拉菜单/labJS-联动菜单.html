@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var city = [
+                ['成都', '绵阳'],
+                ['烟台', '山东']
+        ];//用数组存如城市数据
+        function opt(){
+            var sel = document.getElementById('province');
+            var option = '';
+            if(sel.value == '-1'){//当未选择时city内容为空
+                document.getElementById('city').innerHTML = option;
+                return;
+            }
+            for(var i = 0, len = city[sel.value].length; i < len; i++){
+            option = option + '<option value="'+ i +'">'+ city[sel.value][i] +'</option>';//拼接网页中option选项
+            }
+//            alert(option);//test
+            document.getElementById('city').innerHTML = option;//输出数据到city
+        }
+    </script>
+</head>
+
+
+<body>
+<select name="" id="province" onchange="opt()">
+    <option value="-1">请选择</option>
+    <option value="0">四川</option>
+    <option value="1">山东</option>
+</select>
+
+<select name="" id="city" >
+
+</select>
+</body>
+</html>
