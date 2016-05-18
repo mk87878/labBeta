@@ -4,7 +4,26 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
 
+<body>
+<div style="background: grey;height: 100px;width: 200px;font-size: 50px;text-align: center;">
+5
+</div>
+
+<script>
+    function overTime(){
+        var div = document.getElementsByTagName('div')[0];//找到要操作的dom节点
+//        console.log(div.innerHTML);
+        var time = parseInt(div.innerHTML) - 1;//获取div内的字符串解析并转换为数字
+        div.innerHTML = time;//把减一后的数字输出显示在页面上
+        if(time == '0'){//当时间到0后
+            div.style.backgroundColor = 'red';//背景颜色变为红色
+            clearInterval(clock);//当时间到0后清除定时器
+        }
+    }
+    var clock = setInterval('overTime()',1000);//每1000毫秒运行一次overTime()
+
+
+</script>
 </body>
 </html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            line-height: 30px;
+        }
+        body{
+            margin: 10px;
+        }
+        ul li{
+            float: left;
+            width: 50px;
+            height: 30px;
+            border: 1px solid #2acdaa;
+            list-style: none;
+            display: block;
+
+        }
+        ul .tab{
+            background: #2acdaa;
+        }
+        #box div{
+            clear: both;
+            display: none;
+            width: 154px;
+            height: 70px;
+            border:1px solid #2acdaa;
+        }
+        #box .block{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<ul>
+    <li class="tab">tab1</li>
+    <li>tab2</li>
+    <li>tab3</li>
+</ul>
+<div id="box">
+    <div class="block">div1</div>
+    <div>div2</div>
+    <div>div3</div>
+</div>
+<script>
+    var ul = document.getElementsByTagName('ul')[0];//获取ul dom元素
+    var li = ul.getElementsByTagName('li');//获取ul下所有li元素
+    var box = document.getElementById('box');//获取id为box的dom元素
+    var div = box.getElementsByTagName('div');//获取box下所有div元素
+//    console.log(div);
+//    console.log(ul);
+    for(var i = 0; i<li.length;i++){
+        li[i].index = i;
+//        console.log(li[i].index);
+        li[i].onclick = function(){
+            for(var i = 0; i<li.length;i++){
+                li[i].className='';
+                div[i].style.display='none';
+            };
+            this.className='tab';
+//            console.log(div[this.index]);
+            div[this.index].style.display='block';
+        };
+    };
+</script>
+</body>
+</html>
